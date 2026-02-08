@@ -1,26 +1,279 @@
-@import "tailwindcss";
-
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #0b0b0b;
+  --card: #111;
+  --text: #f2f2f2;
+  --muted: #bdbdbd;
+  --line: rgba(255,255,255,0.12);
+  --max: 1100px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+a { color: inherit; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.container { max-width: var(--max); margin: 0 auto; padding: 24px 16px 60px; }
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(11,11,11,0.9);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+
+.headerInner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 14px 16px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+.brand strong { letter-spacing: 0.08em; font-size: 14px; }
+.brand span { color: var(--muted); font-size: 12px; }
+
+.nav {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.nav a { color: var(--muted); font-size: 14px; }
+.nav a:hover { color: var(--text); }
+
+.hero {
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, #111 0%, #0b0b0b 100%);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.heroTop {
+  padding: 18px 18px 8px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+}
+.heroTop h1 { margin: 0; font-size: 20px; letter-spacing: 0.06em; }
+.heroTop p { margin: 0; color: var(--muted); font-size: 14px; }
+
+.slider {
+  position: relative;
+  width: 100%;
+  height: min(52vw, 420px);
+  background: #000;
+}
+.slider img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 450ms ease;
+}
+.slider img.active { opacity: 1; }
+
+.grid {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+@media (min-width: 840px) {
+  .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+.card {
+  border: 1px solid var(--line);
+  background: var(--card);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.cardImg {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+.cardBody {
+  padding: 10px 12px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+}
+.cardBody strong { font-size: 13px; letter-spacing: 0.06em; }
+.cardBody span { color: var(--muted); font-size: 12px; }
+
+.pageTitle { margin: 18px 0 6px; font-size: 22px; letter-spacing: 0.06em; }
+.pageSub { margin: 0 0 14px; color: var(--muted); }
+
+.masonry {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+@media (min-width: 900px) {
+  .masonry { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+.thumb {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #000;
+  cursor: pointer;
+  padding: 0;
+}
+.thumb img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  transition: transform 200ms ease;
+}
+.thumb:hover img { transform: scale(1.03); }
+
+.footer {
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  padding: 24px 16px;
+  text-align: center;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.78);
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  z-index: 50;
+}
+.modalInner {
+  width: min(1100px, 100%);
+  border: 1px solid var(--line);
+  background: #000;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.modalImg {
+  width: 100%;
+  height: min(70vh, 720px);
+  object-fit: contain;
+  display: block;
+  background: #000;
+}
+.modalBar {
+  padding: 10px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  background: #0d0d0d;
+  border-top: 1px solid var(--line);
+}
+.btn {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--text);
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.btn:hover { background: rgba(255,255,255,0.06); }
+/* Center carousel on homepage */
+.carouselWrap {
+  display: grid;
+  place-items: center;
+  padding: 18px 0 22px;
+}
+
+.carousel {
+  position: relative;
+  width: min(54vw, 760px);   /* примерно пол-экрана */
+  height: min(52vh, 460px);  /* “на пол экрана” по высоте */
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #000;
+}
+
+@media (max-width: 900px) {
+  .carousel {
+    width: 100%;
+    height: min(52vh, 420px);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.carousel img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;   /* ← ВАЖНО */
+  background: #000;
+  opacity: 0;
+  transition: opacity 260ms ease;
+}
+.carousel img.active {
+  opacity: 1;
+}
+
+.carouselBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 1px solid var(--line);
+  background: rgba(0,0,0,0.35);
+  color: var(--text);
+  padding: 10px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+.carouselBtn:hover { background: rgba(0,0,0,0.55); }
+
+.carouselBtn.left { left: 10px; }
+.carouselBtn.right { right: 10px; }
+
+.carouselDots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.carouselDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.08);
+  cursor: pointer;
+}
+.carouselDot.active {
+  background: rgba(255,255,255,0.8);
 }
