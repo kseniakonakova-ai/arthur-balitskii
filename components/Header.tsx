@@ -11,6 +11,7 @@ export default function Header() {
 
         <nav className="nav">
           <Link href="/galleries">Galleries</Link>
+          <Link href="/clients">Clients</Link>
           <Link href="/about">Artist Bio</Link>
           <Link href="/contact">Contact</Link>
         </nav>
