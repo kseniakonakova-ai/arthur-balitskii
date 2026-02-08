@@ -6,12 +6,12 @@ export default function Header() {
       <div className="headerInner">
         <Link href="/" className="brand" aria-label="Home">
           <strong>Arthur Balitskii</strong>
-          <span>Illustration</span>
+          <span>Illustration-Concept Art-Logotypes</span>
         </Link>
 
         <nav className="nav">
           <Link href="/galleries">Galleries</Link>
-          <Link href="/clients">Clients</Link>
+          <Link href="/clients">Client List</Link>
           <Link href="/about">Artist Bio</Link>
           <Link href="/contact">Contact</Link>
         </nav>
