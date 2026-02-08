@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Clients & Services — Portfolio",
+  title: "Clients & Services — Arthur Balitskii",
   description: "Clients, services, licensing and commissions",
 };
 
@@ -7,7 +7,7 @@ export default function ClientsPage() {
   return (
     <>
       <h1 className="pageTitle">Clients / Services</h1>
-      <p className="pageSub">Коммерческие проекты, услуги и лицензирование.</p>
+      <p className="pageSub">Services, licensing & commissions.</p>
 
       <div className="card" style={{ padding: 16, marginBottom: 14 }}>
         <h3 style={{ marginTop: 0 }}>Services</h3>
@@ -23,7 +23,7 @@ export default function ClientsPage() {
       <div className="card" style={{ padding: 16 }}>
         <h3 style={{ marginTop: 0 }}>Selected Clients</h3>
         <p style={{ color: "#bdbdbd", margin: 0 }}>
-          Добавь список брендов/издательств (можно просто текстом или логотипами позже).
+          Add your client list here (names or logos).
         </p>
       </div>
     </>
