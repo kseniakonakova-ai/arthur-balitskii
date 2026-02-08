@@ -4,17 +4,14 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 export default function HeroCarousel() {
   // Замени на свои картинки
-  const slides = useMemo(
-    () => [
-      "/images/slider/slide1.jpg",
-  "/images/slider/slide2.jpg",
-  "/images/slider/slide3.jpg",
-  "/images/slider/slide4.jpg",
-  "/images/slider/slide5.jpg",
-  "/images/slider/slide6.jpg",
-    ],
-    []
-  );
+const slides = [
+  "/images/slider/sliders1.jpg",
+  "/images/slider/sliders2.jpg",
+  "/images/slider/sliders3.jpg",
+  "/images/slider/sliders4.jpg",
+  "/images/slider/sliders5.jpg",
+  "/images/slider/sliders6.jpg",
+];
 
   const [i, setI] = useState(0);
   const startX = useRef<number | null>(null);
